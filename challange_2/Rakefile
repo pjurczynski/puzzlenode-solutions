@@ -1,0 +1,6 @@
+require 'cucumber/rake/task'
+
+#this is just made for learning purposes
+Cucumber::Rake::Task.new(:app) do |t|
+  t.cucumber_opts = %w(--format pretty -t ~@test)
+end
