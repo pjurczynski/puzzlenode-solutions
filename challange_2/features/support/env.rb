@@ -1,2 +1,2 @@
-require 'debugger'
-require_relative 'lib/flight.rb'
+require 'ruby-debug'
+require './lib/flight.rb'
