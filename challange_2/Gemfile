@@ -1,10 +1,11 @@
 source :rubygems
+#gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'debugger', :group => [:development, :test]
 
 group :development do
   gem 'pry'
 end
 group :test do
-  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'cucumber'
   gem 'rspec'
 end

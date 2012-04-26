@@ -10,4 +10,4 @@ Feature: Get you from point A to point B
 
   Scenario: You want to get from point A to point B
     Given a sample flight
-    Then you know its s
+    Then you know its details
