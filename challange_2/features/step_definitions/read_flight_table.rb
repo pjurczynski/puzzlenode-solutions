@@ -10,7 +10,7 @@ When /^I read it$/ do
     lines = f.lines
     @raw_data = JourneyAssistant::DataSet.new(lines)
   end
-  first_test_case = @raw_data.data[0])
+  first_test_case = @raw_data.data[0]
   @flights = JourneyAssistant::FlightsTable.new(first_test_case.data)
 end
 

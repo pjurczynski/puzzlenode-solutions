@@ -7,14 +7,18 @@ module JourneyAssistant
       build_flights(data_set)
     end
 
+    def random_flight
+      @table.sample
+    end
+
+    def routes(from, at)
+    end
+
+    private
     def build_flights(flights)
       flights.each do |flight|
         @table << Flight.new(flight.row.to_s)
       end
-    end
-
-    def random_flight
-      @table.sample
     end
   end
 end
