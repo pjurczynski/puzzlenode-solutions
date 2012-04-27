@@ -1,3 +1,4 @@
+@flight_table
 Feature: I can read a flight table
 
 Scenario: I can read everything from the flight table

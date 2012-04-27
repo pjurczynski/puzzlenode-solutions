@@ -1,7 +1,14 @@
-Given /^a sample flight$/ do
-  @flight = Flight.new( 'A', 'B', '09:00', '10:00', '100.00' )
+require_relative '../../lib/journey_assistant/flight'
+Given /^a sample flight "([^"]*)"$/ do |flight|
+  @flight = JourneyAssistant::Flight.new(flight)
 end
 
-Then /^you know its s$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^you know its details "([^"]*)"$/ do |flight|
+  from, to, departure, arrival, cost = flight.split(' ')
+  @flight.from.should == from
+  @flight.to.should == to
+  @flight.departure.should == departure
+  @flight.arrival.should == arrival
+  @flight.cost.should == cost
 end
+
