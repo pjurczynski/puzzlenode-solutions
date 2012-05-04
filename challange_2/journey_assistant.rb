@@ -1,5 +1,5 @@
 require_relative 'lib/journey_assistant.rb'
-
+require 'debugger'
 SAMPLE_INPUT_PATH = 'data/sample/sample-input.txt'
 
 File.open SAMPLE_INPUT_PATH do |f|
