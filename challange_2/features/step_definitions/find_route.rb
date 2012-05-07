@@ -1,11 +1,12 @@
 When /^I find avalaible routes to airport "([^"]*)"$/ do |destination|
   steps %Q{ Given I know the flights table }
-  pending #add the rest - now I'm busy with airport model
-  @start_point = JourneyAssistant::Flight.new("#{@airport} #{@airport} #{@time} #{@time} 0")
-  @posibble_routes = @flights.routes(@airport, @time)
-  JourneyAssistant::FlightsTable.find_route(@aiport, destination, @time)
+  @destination = destination
+  
+  @routes = @flights.A_to_Z(@time)
 end
 
 Then /^I know the duration and the cost of the flight$/ do
-  pending # express the regexp above with the code you wish you had
+  @routes.each { |route| route.should be_a_kind_of JourneyAssistant::Route }
+  @routes.each { |route| route.first.from.should be == "A" }
+  @routes.each { |route| route.last.to.should be == "Z" }
 end

@@ -1,5 +1,7 @@
 module JourneyAssistant
   class Route
+    attr_accessor :route
+
     def initialize(route = [])
       @route = route
     end
@@ -13,7 +15,13 @@ module JourneyAssistant
       Route.new @route.clone
     end
 
-    attr_writer :route
+    def first
+      @route.first
+    end
+
+    def last
+      @route.last
+    end
 
     #estimate cost, estimate duration
   end
