@@ -1,6 +1,3 @@
-require_relative '../../lib/journey_assistant/flights_table'
-require_relative '../../lib/journey_assistant/data'
-
 Given /^a table in "([^"]*)"$/ do |file_path|
   @file_path = file_path
 end
@@ -15,5 +12,5 @@ When /^I read it$/ do
 end
 
 Then /^I should know what's in it$/ do
-  @flights.random_flight.should be_a_kind_of JourneyAssistant::Flight
+  @flights.table[0].should be_a_kind_of JourneyAssistant::Flight
 end

@@ -15,6 +15,11 @@ module JourneyAssistant
       Route.new @route.clone
     end
 
+    def cost
+      return route.first.cost if route.length == 1
+      @route.inject { |sum, flight| sum.cost + flight.cost }
+    end
+
     def first
       @route.first
     end

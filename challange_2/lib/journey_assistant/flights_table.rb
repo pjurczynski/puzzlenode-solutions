@@ -7,6 +7,11 @@ module JourneyAssistant
       build_flights(data_set)
     end
 
+    def cheapest_route(from, to)
+      @routes_table["#{from}_to_#{to}"].min_by { |r| r.cost }.cost
+    end
+
+    # used to find routes from destination A to B
     def method_missing(m, *args, &block)
       if /^[^_]*_to_[^_]*$/ =~ m
         @routes = []
