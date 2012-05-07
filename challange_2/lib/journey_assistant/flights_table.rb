@@ -7,14 +7,6 @@ module JourneyAssistant
       build_flights(data_set)
     end
 
-    def random_flight
-      @table.sample
-    end
-
-    def routes(from, at)
-      @table.select { |flight| flight.from == from && flight.departure > at }
-    end
-
     def method_missing(m, *args, &block)
       if /^[^_]*_to_[^_]*$/ =~ m
         @routes = []
@@ -39,6 +31,10 @@ module JourneyAssistant
         end
       end
       @routes
+    end
+
+    def routes(from, at)
+      @table.select { |flight| flight.from == from && flight.departure > at }
     end
 
     def build_flights(flights)
