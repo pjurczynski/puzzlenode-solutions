@@ -16,7 +16,6 @@ from, to = "A", "Z"
 
 output = File.open('./output.txt', 'w') do |f|
   @tests.each do |test|
-    binding.pry
     f.puts test.best_alternative(from, to, :cost => test.cheapest_route(from, to))
     f.puts test.best_alternative(from, to, :duration => test.shortest_route(from, to))
     f.puts

@@ -49,7 +49,7 @@ module JourneyAssistant
     end
 
     def routes(from, at)
-      @table.select { |flight| flight.from == from && flight.departure > at }
+      @table.select { |flight| flight.from == from && flight.departure >= at }
     end
 
   private
