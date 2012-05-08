@@ -9,6 +9,6 @@ Then /^you know its details "([^"]*)"$/ do |flight|
   @flight.to.should == to
   @flight.departure.should == departure
   @flight.arrival.should == arrival
-  @flight.cost.should == cost
+  @flight.cost.should == cost.to_f
 end
 

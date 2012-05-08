@@ -15,6 +15,6 @@ When /^calculate the cheapest way$/ do
 end
 
 Then /^I know that the cheapest route from "([^"]*)" to "([^"]*)" is "([^"]*)"$/ do |from, to, cost|
-  @cheapest.should be == cost.to_f
+  @cheapest.cost.should be == cost.to_f
 
 end

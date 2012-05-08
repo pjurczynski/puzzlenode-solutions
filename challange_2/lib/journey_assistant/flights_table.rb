@@ -1,6 +1,6 @@
 module JourneyAssistant
   class FlightsTable
-    attr_reader :table
+    attr_reader :table, :routes_table
 
     def initialize(data_set)
       @table ||= []
@@ -8,11 +8,31 @@ module JourneyAssistant
     end
 
     def cheapest_route(from, to)
-      @routes_table["#{from}_to_#{to}"].min_by { |r| r.cost }.cost
+      routes_table(from, to).min_by { |r| r.cost }
     end
 
     def shortest_route(from, to)
-      @routes_table["#{from}_to_#{to}"].min_by { |r| r.duration }.duration
+      routes_table(from, to).min_by { |r| r.duration }
+    end
+
+    def routes_table(from, to)
+      @routes_table["#{from}_to_#{to}"] ||= eval("#{from}_to_#{to}")
+    end
+
+    def best_alternative(from, to, condition)
+      routes_table_back = routes_table(from, to).dup
+      case condition.keys.first
+      when :cost
+        @routes_table["#{from}_to_#{to}"] = routes_table(from, to).select { |r| r.cost == condition[:cost].cost }
+        @best = shortest_route(from, to)
+
+      when :duration
+        @routes_table["#{from}_to_#{to}"] = routes_table(from, to).select { |r| r.duration == condition[:duration].duration }
+        @best = cheapest_route(from, to)
+      end
+
+      @routes_table["#{from}_to_#{to}"] = routes_table_back
+      @best
     end
 
     # used to find routes from destination A to B
@@ -21,7 +41,7 @@ module JourneyAssistant
         @routes = []
         @routes_table ||= {}
         from, m, to = m.to_s.split('_')
-        @routes_table["#{from}_to_#{to}".to_s] = find_route(from, to, args.first)
+        @routes_table["#{from}_to_#{to}"] = find_route(from, to, args.first)
       else
         super(m, *args, &block)
       end

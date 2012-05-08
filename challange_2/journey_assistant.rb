@@ -10,3 +10,7 @@ end
 @test_cases.data.each do |test|
   @tests << JourneyAssistant::FlightsTable.new(test.data)
 end
+
+@tests.each do |test|
+
+end
