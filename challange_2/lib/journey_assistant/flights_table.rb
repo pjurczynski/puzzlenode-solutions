@@ -11,6 +11,10 @@ module JourneyAssistant
       @routes_table["#{from}_to_#{to}"].min_by { |r| r.cost }.cost
     end
 
+    def shortest_route(from, to)
+      @routes_table["#{from}_to_#{to}"].min_by { |r| r.duration }.duration
+    end
+
     # used to find routes from destination A to B
     def method_missing(m, *args, &block)
       if /^[^_]*_to_[^_]*$/ =~ m

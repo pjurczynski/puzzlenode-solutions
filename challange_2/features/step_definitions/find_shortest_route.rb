@@ -3,7 +3,6 @@ When /^calculate the shortest way$/ do
 end
 
 Then /^I know that the shortest route from "([^"]*)" to "([^"]*)" is "([^"]*)"$/ do |from, to, time|
-  @shortest.should be == time.to_f
-  pending # express the regexp above with the code you wish you had
+  @shortest.should be == time.to_i
 end
 

@@ -12,5 +12,9 @@ module JourneyAssistant
     def cost
       @cost.to_f
     end
+
+    def duration
+      JourneyAssistant::in_minutes(@arrival) - JourneyAssistant::in_minutes(@departure)
+    end
   end
 end

@@ -15,9 +15,17 @@ module JourneyAssistant
       Route.new route.clone
     end
 
+    # TODO: DRY it
     def cost
       return route.first.cost if route.length == 1
       route.inject(0) { |sum, flight| sum + flight.cost }
+    end
+
+    def duration
+      return route.first.duration if route.length == 1
+      start  = JourneyAssistant::in_minutes(first.departure)
+      finish = JourneyAssistant::in_minutes(last.arrival)
+      finish - start
     end
 
     def first
