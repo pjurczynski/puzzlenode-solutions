@@ -1,7 +1,5 @@
 When /^I find avalaible routes to airport "([^"]*)"$/ do |destination|
-  steps %Q{ Given I know the flights table }
   @destination = destination
-  
   @routes = @flights.A_to_Z(@time)
 end
 

@@ -7,25 +7,25 @@ module JourneyAssistant
     end
 
     def add_flight(flight)
-      @route.push flight
+      route.push flight
       return self
     end
 
     def clone
-      Route.new @route.clone
+      Route.new route.clone
     end
 
     def cost
       return route.first.cost if route.length == 1
-      @route.inject { |sum, flight| sum.cost + flight.cost }
+      route.inject(0) { |sum, flight| sum + flight.cost }
     end
 
     def first
-      @route.first
+      route.first
     end
 
     def last
-      @route.last
+      route.last
     end
 
     #estimate cost, estimate duration

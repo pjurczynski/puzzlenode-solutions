@@ -23,6 +23,10 @@ module JourneyAssistant
       end
     end
 
+    def routes(from, at)
+      @table.select { |flight| flight.from == from && flight.departure > at }
+    end
+
   private
     def find_route(from, to, time, route=nil)
       routes(from, time).each do |flight|
@@ -36,10 +40,6 @@ module JourneyAssistant
         end
       end
       @routes
-    end
-
-    def routes(from, at)
-      @table.select { |flight| flight.from == from && flight.departure > at }
     end
 
     def build_flights(flights)

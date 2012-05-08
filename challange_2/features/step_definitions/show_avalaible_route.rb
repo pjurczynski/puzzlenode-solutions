@@ -3,10 +3,11 @@ Given /^I am on the airport "([^"]*)" at "([^"]*)"$/ do |airport_departure, time
   @time = time
 end
 
-Given /^I know the flights table$/ do
+Given /^I know the "([^"]*)" flights table$/ do |test_number|
   steps %Q{
     Given a table in "data/sample/sample-input.txt"
     When I read it
+      And I get the "#{test_number}" test case
     Then I should know what's in it
   }
   @flights.should be_a_kind_of JourneyAssistant::FlightsTable

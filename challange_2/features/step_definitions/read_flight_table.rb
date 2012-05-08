@@ -7,7 +7,10 @@ When /^I read it$/ do
     lines = f.lines
     @raw_data = JourneyAssistant::DataSet.new(lines)
   end
-  first_test_case = @raw_data.data[0]
+end
+
+When /^I get the "([^"]*)" test case$/ do |test_number|
+  first_test_case = @raw_data.data[test_number.to_i]
   @flights = JourneyAssistant::FlightsTable.new(first_test_case.data)
 end
 

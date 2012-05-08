@@ -1,8 +1,11 @@
-Given /^a flight table with all routes from "([^"]*)" to "([^"]*)" starting at "([^"]*)"$/ do |from, to, at|
+Given /^a "([^"]*)" flight table with all routes from "([^"]*)" to "([^"]*)" starting at "([^"]*)"$/ \
+  do |test_number, from, to, at|
+
   @from = from
   @to = to
   steps %Q{
     Given I am on the airport "#{from}" at "#{at}"
+    And I know the "#{test_number}" flights table
     When I find avalaible routes to airport "#{to}"
   }
 end
