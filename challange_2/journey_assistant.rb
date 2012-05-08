@@ -1,8 +1,9 @@
 require_relative 'lib/journey_assistant.rb'
 require 'debugger'
 SAMPLE_INPUT_PATH = 'data/sample/sample-input.txt'
+INPUT_PATH        = 'data/input.txt'
 
-File.open SAMPLE_INPUT_PATH do |f|
+File.open INPUT_PATH do |f|
   @test_cases = JourneyAssistant::DataSet.new(f.lines)
 end
 
@@ -11,6 +12,13 @@ end
   @tests << JourneyAssistant::FlightsTable.new(test.data)
 end
 
-@tests.each do |test|
+from, to = "A", "Z"
 
+output = File.open('./output.txt', 'w') do |f|
+  @tests.each do |test|
+    binding.pry
+    f.puts test.best_alternative(from, to, :cost => test.cheapest_route(from, to))
+    f.puts test.best_alternative(from, to, :duration => test.shortest_route(from, to))
+    f.puts
+  end
 end

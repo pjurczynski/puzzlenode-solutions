@@ -4,6 +4,7 @@ module JourneyAssistant
 
     def initialize(data_set)
       @table ||= []
+      @routes_table = {}
       build_flights(data_set)
     end
 
@@ -16,7 +17,7 @@ module JourneyAssistant
     end
 
     def routes_table(from, to)
-      @routes_table["#{from}_to_#{to}"] ||= eval("#{from}_to_#{to}")
+      @routes_table["#{from}_to_#{to}"] ||= send("#{from}_to_#{to}", '00:00')
     end
 
     def best_alternative(from, to, condition)

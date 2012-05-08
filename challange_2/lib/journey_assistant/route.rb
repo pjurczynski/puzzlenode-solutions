@@ -36,6 +36,8 @@ module JourneyAssistant
       route.last
     end
 
-    #estimate cost, estimate duration
+    def to_s
+      [first.departure, last.arrival, cost.to_s('F')].join(' ')
+    end
   end
 end

@@ -1,3 +1,4 @@
+require 'bigdecimal'
 # from, to, start, end, cost
 # course,    time_span
 # return enumerator!
@@ -10,7 +11,7 @@ module JourneyAssistant
     end
 
     def cost
-      @cost.to_f
+      BigDecimal.new(@cost)
     end
 
     def duration
