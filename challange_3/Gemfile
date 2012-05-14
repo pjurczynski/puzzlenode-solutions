@@ -1,0 +1,12 @@
+source :rubygems
+#gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'debugger', :group => [:development, :test]
+gem 'puzzle_reader'
+
+group :development do
+  gem 'pry'
+end
+group :test do
+  gem 'cucumber'
+  gem 'rspec'
+end
