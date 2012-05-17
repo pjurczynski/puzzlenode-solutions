@@ -5,6 +5,8 @@ gem 'puzzle_reader'
 
 group :development do
   gem 'pry'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
 end
 group :test do
   gem 'cucumber'
